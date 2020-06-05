@@ -26,6 +26,7 @@ export class TimerService {
           if (this.counter % 10==0){
             console.log("10 s" );
             this.bit.update();
+            this.bit.lista();
           }
         }, ms
 

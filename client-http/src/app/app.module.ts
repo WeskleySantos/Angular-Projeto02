@@ -13,6 +13,7 @@ import { ListComponent } from './list/list.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LojaComponent } from './loja/loja.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     IndexComponent,
     BitcoinComponent,
     BitconBrlComponent,
-    ListComponent
+    ListComponent,
+    LojaComponent
   ],
   imports: [
     BrowserModule,

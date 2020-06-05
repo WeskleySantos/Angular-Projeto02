@@ -1,0 +1,4 @@
+<h2>Dinheiro: {{this.loja.valor}}</h2>
+<input type="number" #valor >
+<button (click)="this.loja.comprar(this.valor.value)">Comprar</button>
+<button (click)="this.loja.vender(this.valor.value)">Vender</button>
