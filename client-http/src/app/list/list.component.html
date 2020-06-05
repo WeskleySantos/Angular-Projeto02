@@ -1,0 +1,11 @@
+<h1>List</h1>
+<div>
+  <input #nameInput type="text"/>
+  <button (click)="this.listService.addItem(nameInput.value); nameInput.value=''">Add</button>
+</div>
+<ul>
+  <li *ngFor="let item of this.listService.list">
+    {{item.name}}
+    <span (click)="this.listService.removeItem(item)" style='cursor: pointer;'>-</span>
+  </li>
+</ul>

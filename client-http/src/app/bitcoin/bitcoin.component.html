@@ -1,0 +1,39 @@
+<h1>Bitcoin Rates</h1>
+<div *ngIf="getCurrentPrice()">
+  <h2>Time</h2>
+  <div>{{this.getCurrentPrice().time.updated}}</div>
+  <h2>Disclaimer</h2>
+  <div>{{this.getCurrentPrice().disclaimer}}</div>
+  <h2>Rates</h2>
+  <h3>{{this.getCurrentPrice().bpi.USD.description}}</h3>
+  <h4><span [innerHTML]="this.getCurrentPrice().bpi.USD.symbol"></span>&nbsp;{{this.getCurrentPrice().bpi.USD.rate}}</h4>
+  <h3>{{this.getCurrentPrice().bpi.GBP.description}}</h3>
+  <h4><span [innerHTML]="this.getCurrentPrice().bpi.GBP.symbol"></span>&nbsp;{{this.getCurrentPrice().bpi.GBP.rate}}</h4>
+  <h3>{{this.getCurrentPrice().bpi.EUR.description}}</h3>
+  <h4><span [innerHTML]="this.getCurrentPrice().bpi.EUR.symbol"></span>&nbsp;{{this.getCurrentPrice().bpi.EUR.rate}}</h4>
+</div>
+<hr/>
+<div>
+  <input type="button" value="Refresh" (click)="update()" />
+  <span>&nbsp;Updated in {{this.bitcoinService.lastUpdate | date:"full"}}</span>
+</div>
+<div>
+  <input type="button" value="Refresh" (click)="listar()" />
+  <span>&nbsp;OBA</span>
+</div>
+<hr/>
+<h2>Update histoty</h2>
+<table class="table">
+  <tr>
+    <th scope="col">Timestamp</th>
+    <th scope="col">USD</th>
+    <th scope="col">GBP</th>
+    <th scope="col">EUR</th>
+  </tr>
+  <tr *ngFor="let price of this.bitcoinService.updateList">
+    <td>{{price.timestamp | date:"full"}}</td>
+    <td>{{price.USD | currency}}</td>
+    <td>{{price.GBP | currency}}</td>
+    <td>{{price.EUR | currency}}</td>
+  </tr>
+</table>

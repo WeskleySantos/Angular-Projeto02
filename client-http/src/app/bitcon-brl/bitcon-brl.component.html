@@ -1,0 +1,17 @@
+<h1>Bitcoin Brazilian Rates</h1>
+<div *ngIf="currentPrice">
+  <h2>Time</h2>
+  <div>{{this.currentPrice.time.updated}}</div>
+  <h2>Disclaimer</h2>
+  <div>{{this.currentPrice.disclaimer}}</div>
+  <h2>Rates</h2>
+  <h3>{{this.currentPrice.bpi.USD.description}}</h3>
+  <h4>US$&nbsp;{{this.currentPrice.bpi.USD.rate}}</h4>
+  <h3>{{this.currentPrice.bpi.BRL.description}}</h3>
+  <h4>R$&nbsp;{{this.currentPrice.bpi.BRL.rate}}</h4>
+</div>
+<hr/>
+<div>
+  <input type="button" value="Refresh" (click)="update()" />
+  <span>&nbsp;Updated in {{this.lastUpdate | date:"full"}}</span>
+</div>

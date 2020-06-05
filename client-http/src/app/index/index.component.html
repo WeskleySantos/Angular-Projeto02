@@ -1,0 +1,14 @@
+<h1>Index</h1>
+<p>
+  Web portal for bitcoin indexation using:<br/>
+  <a href="https://www.coindesk.com/coindesk-api" target="_blank">
+    CoinDesk API
+  </a>
+</p>
+
+<h2>Timer</h2>
+<div>{{this.timerService.getCount()}}</div>
+<h2>Log messages</h2>
+<ul>
+  <li *ngFor="let message of this.logger.messages">{{message}}</li>
+</ul>
