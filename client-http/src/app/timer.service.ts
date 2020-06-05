@@ -23,9 +23,9 @@ export class TimerService {
         () => {
           this.counter++;
           console.log("Seg: " + this.getCount());
-          if (this.counter % 20==0){
-            console.log("Seg:" );
-            this.bit.verifica();
+          if (this.counter % 10==0){
+            console.log("10 s" );
+            this.bit.update();
           }
         }, ms
 

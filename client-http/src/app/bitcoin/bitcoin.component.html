@@ -13,15 +13,12 @@
   <h4><span [innerHTML]="this.getCurrentPrice().bpi.EUR.symbol"></span>&nbsp;{{this.getCurrentPrice().bpi.EUR.rate}}</h4>
 </div>
 <hr/>
-<div>
-  <input type="button" value="Refresh" (click)="update()" />
-  <span>&nbsp;Updated in {{this.bitcoinService.lastUpdate | date:"full"}}</span>
-</div>
+
 <div>
 
 <hr/>
 <h2>Update histoty</h2>
-<nav *ngIf="this.bitcoinService.verifica()">
+<nav >
 <table class="table" >
   <tr>
     <th scope="col">Timestamp</th>

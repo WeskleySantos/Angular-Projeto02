@@ -33,7 +33,7 @@ export class BitcoinService {
   preco: any[] = [];
   currentPrice: Response;
   lastUpdate: Date;
-
+  oba: PriceUpdate;
   updateList: Array<PriceUpdate> = [];
 
   constructor(private notifica:MatSnackBar ,private http: HttpClient, private logger: LoggerService) {
@@ -57,20 +57,24 @@ export class BitcoinService {
     this.lista();
   }
 lista(){
-  this.updateList.forEach(oba => {
-    this.preco[this.conta+=1] = oba.EUR
-  });
-
+ 
+for (const oba of this.updateList) {
+  this.preco[this.conta+=1]= oba.EUR;
+  
+}
+  this.verifica();
 }
 
 verifica(){
+  console.log(this.preco[this.preco.length] +" ---> "+ this.preco[this.preco.length-1]);
 if (this.conta == 0) {
-   return true;
 } else {
   console.log("ENTRO");
-  if (this.preco[this.preco.length] !== this.preco[this.preco.length -2]){
-    this.update();
-  this.notifica.open('DA','Fechar',{
+  console.log(this.preco[this.preco.length] +" ---> "+ this.preco[this.preco.length -1]);
+
+  if (this.preco[this.preco.length] !== this.preco[this.preco.length -1]){
+    console.log("Diferentes")
+  this.notifica.open('Valor do BitCoin Atualizado','Fechar',{
     duration:5000,
     verticalPosition: 'top',
     horizontalPosition: 'right'
