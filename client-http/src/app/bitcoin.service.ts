@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoggerService } from './logger.service';
-
+import { MatSnackBar } from '@angular/material'
 interface Response {
   time: {
     updated: string;
@@ -29,13 +29,14 @@ interface PriceUpdate {
   providedIn: 'root'
 })
 export class BitcoinService {
+  conta: number = 0;
+  preco: any[] = [];
   currentPrice: Response;
   lastUpdate: Date;
 
   updateList: Array<PriceUpdate> = [];
 
-  constructor(private http: HttpClient, private logger: LoggerService) {
-    logger.add('Oba: ');
+  constructor(private notifica:MatSnackBar ,private http: HttpClient, private logger: LoggerService) {
    
   }
   teste(){
@@ -53,5 +54,31 @@ export class BitcoinService {
         EUR: this.currentPrice.bpi.EUR.rate_float
       });
     });
+    this.lista();
   }
+lista(){
+  this.updateList.forEach(oba => {
+    this.preco[this.conta+=1] = oba.EUR
+  });
+
+}
+
+verifica(){
+if (this.conta == 0) {
+   return true;
+} else {
+  console.log("ENTRO");
+  if (this.preco[this.preco.length] !== this.preco[this.preco.length -2]){
+    this.update();
+  this.notifica.open('DA','Fechar',{
+    duration:5000,
+    verticalPosition: 'top',
+    horizontalPosition: 'right'
+  
+  })
+  return true;
+}
+      }
+
+}
 }

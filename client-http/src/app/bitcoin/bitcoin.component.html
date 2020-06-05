@@ -18,12 +18,11 @@
   <span>&nbsp;Updated in {{this.bitcoinService.lastUpdate | date:"full"}}</span>
 </div>
 <div>
-  <input type="button" value="Refresh" (click)="listar()" />
-  <span>&nbsp;OBA</span>
-</div>
+
 <hr/>
 <h2>Update histoty</h2>
-<table class="table">
+<nav *ngIf="this.bitcoinService.verifica()">
+<table class="table" >
   <tr>
     <th scope="col">Timestamp</th>
     <th scope="col">USD</th>
@@ -36,4 +35,6 @@
     <td>{{price.GBP | currency}}</td>
     <td>{{price.EUR | currency}}</td>
   </tr>
+
 </table>
+</nav>

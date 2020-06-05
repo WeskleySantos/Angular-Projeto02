@@ -16,6 +16,7 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
     this.logger.add('IndexComponent initialized');
     this.timerService.start(1000);
+    console.log("Seg: " + this.timerService.getCount());
   }
 
 }
